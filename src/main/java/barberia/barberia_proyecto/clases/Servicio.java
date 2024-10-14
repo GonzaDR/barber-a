@@ -1,5 +1,7 @@
 package barberia.barberia_proyecto.clases;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author IFSul
@@ -7,10 +9,10 @@ package barberia.barberia_proyecto.clases;
 public class Servicio {
     private int id_servicio;
     private String nombre_servicio;
-    private double precio_servicio;
+    private BigDecimal precio_servicio;
     private String descr_servicio;
 
-    public Servicio(int id_servicio, String nombre_servicio, double precio_servicio, String descr_servicio) {
+    public Servicio(int id_servicio, String nombre_servicio, BigDecimal precio_servicio, String descr_servicio) {
         this.id_servicio = id_servicio;
         this.nombre_servicio = nombre_servicio;
         this.precio_servicio = precio_servicio;
@@ -33,15 +35,16 @@ public class Servicio {
         this.nombre_servicio = nombre_servicio;
     }
 
-    public double getPrecio_servicio() {
+    public BigDecimal getPrecio_servicio() {
         return precio_servicio;
     }
 
-    public void setPrecio_servicio(double precio_servicio) {
-    	if(precio_servicio > 0) {
+    public void setPrecio_servicio(BigDecimal precio_servicio) {
+    	if(precio_servicio.compareTo(BigDecimal.ZERO) > 0) {
     		this.precio_servicio = precio_servicio;
+    	} else {
+    		throw new IllegalArgumentException("El precio del servicio debe ser mayor a cero.");
     	}
-    	throw new IllegalArgumentException("El precio del servicio debe ser mayor a cero.");
     }
 
     public String getDescr_servicio() {

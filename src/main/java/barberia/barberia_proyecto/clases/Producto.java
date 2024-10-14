@@ -1,16 +1,19 @@
 package barberia.barberia_proyecto.clases;
 
+import java.math.BigDecimal;
+
 /**
  *
  * @author IFSul
  */
 public class Producto {
     private int id_prod;
-    private double precio;
+    private BigDecimal precio;
     private String descripcion;
     private String nombre_prod;
 
-    public Producto(String descripcion, String nombre_prod, double precio) {
+    public Producto(int id_prod, String descripcion, String nombre_prod, BigDecimal precio) {
+    	this.id_prod = id_prod;
         this.precio = precio;
         this.descripcion = descripcion;
         this.nombre_prod = nombre_prod;
@@ -24,12 +27,12 @@ public class Producto {
         this.id_prod = id_prod;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
-        if (precio > 0) {
+    public void setPrecio(BigDecimal precio) {
+        if (precio.compareTo(BigDecimal.ZERO) > 0) {
             this.precio = precio;
         } else {
             throw new IllegalArgumentException("El precio debe ser mayor a cero.");

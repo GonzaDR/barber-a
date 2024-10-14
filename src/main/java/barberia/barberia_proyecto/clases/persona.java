@@ -4,7 +4,7 @@ package barberia.barberia_proyecto.clases;
  *
  * @author IFSul
  */
-public abstract class persona {
+public abstract class Persona {
 
     private int id;
     private String nombre;
@@ -13,7 +13,7 @@ public abstract class persona {
     private String email;
     private String nacionalidad;
 
-    public persona(int id, String nombre, String cpf, String telefono, String email, String nacionalidad) {
+    public Persona(int id, String nombre, String cpf, String telefono, String email, String nacionalidad) {
     	if(!validarCPF(cpf)) {
     		throw new IllegalArgumentException("CPF invalido.");
     	}

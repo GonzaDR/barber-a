@@ -6,10 +6,10 @@ import java.util.ArrayList;
  *
  * @author IFSul
  */
-public class agenda {
+public class Agenda {
     private ArrayList<String> citas;
     
-    public agenda(){
+    public Agenda(){
     citas = new ArrayList<>();
     }
     public void agregarCita(String cita){

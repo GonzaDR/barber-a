@@ -1,6 +1,8 @@
 package barberia.barberia_proyecto;
 
 import barberia.barberia_proyecto.clases.*;
+
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -10,47 +12,35 @@ import java.time.LocalDateTime;
 public class Barberia_proyecto {
 
     public static void main(String[] args) {
-        // Crear instancias de Cliente, Profesional y Productos
-        cliente cliente1 = new cliente(1, "Juan Pérez", "71702981126", "555-1234", "juan.perez@example.com", "Uruguayo");
-        profesional profesional1 = new profesional(2, "Carlos Martínez", "71702981126", "555-5678", "carlos.martinez@example.com", "Uruguayo");
+        // Crear algunos productos
+        Producto producto1 = new Producto(1,"Shampo 350ml", "Shampo Sedal", new BigDecimal("50.00"));
+        Producto producto2 = new Producto(2,"Acondicionador 350ml", "Acondicionador Sedal", new BigDecimal("30.00"));
 
-        // Crear productos
-        Producto producto1 = new Producto("Shampoo", "Shampoo para cabello normal", 15.00);
-        Producto producto2 = new Producto("Afeitadora", "Afeitadora eléctrica", 80.00);
-        
-        System.out.println("");
-        
+        // Crear algunos servicios
+        Servicio servicio1 = new Servicio(1, "Corte de barba", new BigDecimal("25.00"), "Corte de barba personalizado");
+        Servicio servicio2 = new Servicio(2, "Tinte de cabello", new BigDecimal("40.00"), "Tinte profesional");
+
+        // Crear un cliente
+        Cliente cliente = new Cliente(1, "Juan Pérez", "71702981126", "555-1234", "juanperez@gmail.com", "Uruguayo");
+
+        // Crear un profesional (barbero)
+        Profesional profesional = new Profesional(1, "Carlos López", "71702981126", "555-5678", "carlos@email.com", "Uruguayo");
+
         // Crear una venta
-        Venta venta1 = new Venta(LocalDateTime.now(), 0.0, "Venta de productos de barbería", 2, 0.0, cliente1, profesional1);
+        Venta venta = new Venta(LocalDateTime.now(), BigDecimal.ZERO,  "Venta de servicios y productos",1 , cliente, profesional);
 
         // Agregar productos a la venta
-        venta1.agregarProducto(producto1);
-        venta1.agregarProducto(producto2);
+        venta.agregarProducto(producto1);
+        venta.agregarProducto(producto2);
+ 
+        // Agregar servicios a la venta
+        venta.agregarServicio(servicio1);
+        venta.agregarServicio(servicio2);
 
-        System.out.println("");
-        
-        // Mostrar el reporte de la venta
-        venta1.relatorioVenta();
-        
-        System.out.println("");
-        
-        venta1.mostrarVenta();
+        // Mostrar detalles de la venta
+        venta.mostrarVenta();
 
-        // Mostrar datos del cliente y profesional
-        System.out.println(cliente1);
-        
-        System.out.println("");
-        
-        System.out.println(profesional1);
-
-        System.out.println("");
-        
-        // Ejemplo de administración de productos por el administrador
-        administrador admin = new administrador(3, "Ana Gómez", "71702981126", "555-9999", "ana.gomez@example.com", "Uruguayo");
-        admin.agregarProducto("Crema para barba", "Crema hidratante para la barba", 25.00);
-        
-        System.out.println("");
-        
-        admin.mostrarProductos();
+        // Generar reporte de venta
+        venta.relatorioVenta();
     }
 }
